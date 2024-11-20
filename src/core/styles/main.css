@@ -1,3 +1,13 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  color: var(--gray-600);
+  font-family: 'Inter Variable', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--gray-900);
 }

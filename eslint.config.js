@@ -11,6 +11,9 @@ export default tseslint.config(
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommendedTypeChecked, eslintPluginPrettierRecommended],
     files: ['**/*.{ts,tsx}'],
+    settings: {
+      react: { version: 'detect' },
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,

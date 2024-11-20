@@ -1,0 +1,134 @@
+.root {
+  display: flex;
+  align-items: center;
+  padding: var(--space-8) var(--space-12);
+
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 500;
+
+  background-color: var(--primary-600);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+
+  box-shadow: var(--shadow-xs);
+  transition-duration: 0.2s;
+  transition-property: background-color, color;
+  transition-timing-function: linear;
+
+  &:hover {
+    background-color: var(--primary-700);
+  }
+
+  &.disabled {
+    color: var(--gray-400);
+
+    background-color: var(--gray-100);
+    border-color: var(--gray-200);
+    cursor: not-allowed;
+
+    &:hover {
+      color: var(--gray-400);
+
+      background-color: var(--gray-100);
+    }
+  }
+
+  &.md {
+    padding: 10px 14px;
+  }
+
+  &.lg {
+    padding: 12px 16px;
+
+    font-size: var(--text-md);
+  }
+
+  &.xl {
+    padding: 14px 18px;
+  }
+
+  &.xxl {
+    padding: 18px 22px;
+
+    font-size: var(--text-lg);
+
+    border-radius: var(--radius-lg);
+  }
+}
+
+.secondary {
+  color: var(--gray-700);
+
+  background-color: #fff;
+  border-color: var(--gray-300);
+
+  &:hover {
+    color: var(--gray-800);
+
+    background-color: var(--gray-50);
+  }
+}
+
+.secondary.disabled {
+  background-color: #fff;
+
+  &:hover {
+    background-color: initial;
+  }
+}
+
+.tertiary {
+  color: var(--primary-700);
+
+  background-color: #fff;
+  border-color: var(--primary-300);
+
+  &:hover {
+    color: var(--primary-800);
+
+    background-color: var(--primary-50);
+  }
+}
+
+.tertiary.disabled {
+  background-color: #fff;
+
+  &:hover {
+    background-color: initial;
+  }
+}
+
+.danger {
+  background-color: var(--red-600);
+
+  &:hover {
+    background-color: var(--red-700);
+  }
+}
+
+.root.link {
+  padding: 0;
+
+  color: var(--gray-600);
+
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+
+  box-shadow: none;
+
+  &:hover {
+    color: initial;
+
+    background-color: initial;
+  }
+}
+
+.icon {
+  margin-right: var(--space-4);
+
+  font-size: 0;
+}

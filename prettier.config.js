@@ -2,12 +2,11 @@ export default {
   endOfLine: 'lf',
   useTabs: false,
   tabWidth: 2,
-  printWidth: 120,
+  printWidth: 100,
   semi: true,
   singleQuote: true,
   bracketSpacing: true,
   plugins: ['@ianvs/prettier-plugin-sort-imports'],
-  importOrderSeparation: true,
   importOrder: [
     '^react$',
     '^react-dom$',
@@ -27,7 +26,16 @@ export default {
     '^@core/(.*)$',
     '',
 
+    '^@entities/(.*)$',
+    '',
+
+    '^@components/(.*)$',
+    '',
+
     '^@ui/(.*)$',
+    '',
+
+    '^@pages/(.*)$',
     '',
 
     '^@assets/(.*)$',

@@ -1,0 +1,59 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.checkbox {
+  display: none;
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-xs);
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+
+  svg {
+    opacity: 0;
+
+    transition: opacity 0.2s;
+  }
+}
+
+.sm .iconWrapper {
+  width: 16px;
+  height: 16px;
+}
+
+.md .iconWrapper {
+  width: 20px;
+  height: 20px;
+}
+
+.iconWrapper.checked {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+
+  svg {
+    opacity: 1;
+
+    path {
+      stroke: var(--base-white);
+    }
+  }
+}
+
+.name {
+  font-size: --var(--text-sm);
+}

@@ -9,6 +9,18 @@ export default defineConfig(({ mode }) => {
   return {
     server: {
       port: parseInt(env.VITE_PORT) || 5173,
+      proxy: {
+        '/api': {
+          target: env.VITE_PROXY_TARGET || 'http://localhost:3000',
+          changeOrigin: true,
+          secure: false,
+        },
+        '/public': {
+          target: env.VITE_PROXY_TARGET || 'http://localhost:3000',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
     },
     define: {
       'process.env': env,

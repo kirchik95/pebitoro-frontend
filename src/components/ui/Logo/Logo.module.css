@@ -1,0 +1,10 @@
+.root {
+  padding-left: var(--space-16);
+  margin-bottom: var(--space-20);
+
+  color: var(--gray-900);
+  font-size: var(--title-sm);
+  font-weight: 500;
+  line-height: 38px;
+  letter-spacing: 0.5px;
+}

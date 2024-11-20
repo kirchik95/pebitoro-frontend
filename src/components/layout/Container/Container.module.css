@@ -1,0 +1,6 @@
+.root {
+  max-width: var(--container-max-width-desktop);
+  padding: 0 var(--container-padding-desktop);
+  margin: 0 auto;
+}
+

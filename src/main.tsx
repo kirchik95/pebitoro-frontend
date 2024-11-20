@@ -1,7 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { RouterProvider } from 'react-router-dom';
 
-import App from '@core/App';
+import { store } from '@core/redux/store';
+import { router } from '@core/router/routing';
 
 import '@fontsource/open-sans';
 import '@fontsource-variable/inter';
@@ -11,6 +14,13 @@ import '@core/styles/main.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <Provider store={store}>
+      <RouterProvider
+        future={{
+          v7_startTransition: true,
+        }}
+        router={router}
+      />
+    </Provider>
   </StrictMode>,
 );
