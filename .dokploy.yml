@@ -1,0 +1,3 @@
+build:
+  use: dockerfile
+  dockerfile_path: Dockerfile
