@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.1.0",
@@ -40,6 +41,8 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.49",
     "postcss-custom-media": "^11.0.5",
     "postcss-custom-properties": "^14.0.4",
@@ -55,5 +58,16 @@
     "vite": "^5.4.10",
     "vite-plugin-checker": "^0.8.0",
     "vite-tsconfig-paths": "^5.1.2"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{css,scss}": [
+      "stylelint --fix"
+    ]
   }
 }
