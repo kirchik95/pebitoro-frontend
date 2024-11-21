@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router-dom';
 import { store } from '@core/redux/store';
 import { router } from '@core/router/routing';
 
-import '@fontsource/open-sans';
+// @ts-expect-error:next-line
 import '@fontsource-variable/inter';
 import 'modern-normalize/modern-normalize.css';
 import '@core/styles/variables.css';

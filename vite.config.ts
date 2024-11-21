@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
     },
     css: {
       modules: {
-        generateScopedName: '[name]__[local]--[hash:base64:5]',
+        generateScopedName: '[folder]__[local]--[hash:base64:5]',
       },
     },
     plugins: [

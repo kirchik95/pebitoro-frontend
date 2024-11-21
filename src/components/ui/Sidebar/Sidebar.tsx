@@ -3,21 +3,19 @@ import ReactDOM from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import cn from 'classnames';
 
-import { Title } from '@components/typography/Title';
-
 import { Button } from '../Button';
+import { Icon } from '../Icon';
 
 import s from './Sidebar.module.css';
 
 interface SidebarProps {
   className?: string;
-  title?: string | React.ReactNode;
   isOpen: boolean;
   children: React.ReactNode;
   onClose: () => void;
 }
 
-export const Sidebar = ({ className, title, isOpen, children, onClose }: SidebarProps) => {
+export const Sidebar = ({ className, isOpen, children, onClose }: SidebarProps) => {
   return ReactDOM.createPortal(
     <AnimatePresence>
       {isOpen && (
@@ -26,7 +24,7 @@ export const Sidebar = ({ className, title, isOpen, children, onClose }: Sidebar
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ type: 'ease-in-out' }}
+          transition={{ type: 'tween', ease: 'easeInOut' }}
           onClick={onClose}
         >
           <motion.div
@@ -34,12 +32,13 @@ export const Sidebar = ({ className, title, isOpen, children, onClose }: Sidebar
             initial={{ x: '100%' }}
             animate={{ x: isOpen ? 0 : '100%' }}
             exit={{ x: '100%' }}
-            transition={{ type: 'ease-in-out' }}
+            transition={{ type: 'tween', ease: 'easeInOut' }}
             onClick={(event) => event.stopPropagation()}
           >
             <div className={s.header}>
-              <Title as="h2">{title}</Title>
-              <Button className={s.button} theme="secondary" icon="close" onClick={onClose} />
+              <Button className={s.button} theme="secondary" onClick={onClose}>
+                <Icon name="close" />
+              </Button>
             </div>
             <div className={s.content}>{children}</div>
           </motion.div>

@@ -9,7 +9,11 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommendedTypeChecked, eslintPluginPrettierRecommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
+      eslintPluginPrettierRecommended,
+    ],
     files: ['**/*.{ts,tsx}'],
     settings: {
       react: { version: 'detect' },
@@ -33,6 +37,7 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       'prettier/prettier': 'warn',
+      '@typescript-eslint/no-misused-promises': 'off',
     },
   },
 );

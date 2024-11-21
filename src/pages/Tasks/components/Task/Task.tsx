@@ -13,8 +13,8 @@ import s from './Task.module.css';
 interface TaskProps {
   className?: string;
   item: TaskEntity;
-  onChange: (data: Partial<TaskEntity>) => void;
-  onEdit: () => void;
+  onChange: (item: Pick<TaskEntity, 'id' | 'status'>) => void;
+  onEdit: (item: TaskEntity) => void;
   onDelete: (id: number) => void;
 }
 
@@ -28,7 +28,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
   };
 
   const handleEdit = () => {
-    onEdit();
+    onEdit(item);
   };
 
   return (
