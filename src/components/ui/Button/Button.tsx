@@ -12,7 +12,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode | string;
 
   children?: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Button = (props: ButtonProps) => {

@@ -16,6 +16,25 @@ interface SidebarProps {
 }
 
 export const Sidebar = ({ className, isOpen, children, onClose }: SidebarProps) => {
+  const handleClose = React.useCallback(
+    (event: React.MouseEvent | KeyboardEvent) => {
+      if (!isOpen) return;
+
+      if (event.type === 'click' || (event as KeyboardEvent).key === 'Escape') {
+        onClose();
+      }
+    },
+    [isOpen, onClose],
+  );
+
+  React.useEffect(() => {
+    document.addEventListener('keydown', handleClose);
+
+    return () => {
+      document.removeEventListener('keydown', handleClose);
+    };
+  }, [handleClose]);
+
   return ReactDOM.createPortal(
     <AnimatePresence>
       {isOpen && (
@@ -25,7 +44,7 @@ export const Sidebar = ({ className, isOpen, children, onClose }: SidebarProps) 
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ type: 'tween', ease: 'easeInOut' }}
-          onClick={onClose}
+          onClick={handleClose}
         >
           <motion.div
             className={cn(s.root, className)}

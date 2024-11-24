@@ -39,15 +39,14 @@ export const TaskEditorSidebar = ({ className, isOpen, item, onClose }: TaskEdit
   const handleConfirm = async () => {
     await dispatch(createTask(data));
 
+    setData({ title: '', description: '' });
+
     onClose();
   };
 
   React.useEffect(() => {
     setData(item ? item : { title: '', description: '' });
   }, [item]);
-
-  console.log(data);
-  console.log(item);
 
   return (
     <Sidebar isOpen={isOpen} onClose={onClose}>

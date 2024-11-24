@@ -1,7 +1,9 @@
+import { Title } from '@components/typography/Title';
+
 export const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <Title>Welcome</Title>
     </div>
   );
 };

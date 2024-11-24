@@ -37,6 +37,7 @@
 .header .button {
   padding: var(--space-4);
 
+  color: var(--gray-500);
   font-size: 0;
 
   border: 0;

@@ -33,7 +33,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
 
   return (
     <motion.div
-      className={cn(s.root, className)}
+      className={cn(s.root, className, { [s.completed]: item.status === 'completed' })}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
@@ -41,6 +41,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
     >
       <div className={s.header}>
         <Checkbox
+          className={s.checkbox}
           size="md"
           label={item.title}
           onChange={handleChange}

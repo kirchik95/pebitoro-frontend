@@ -18,8 +18,10 @@ import s from './Tasks.module.css';
 export const Tasks = () => {
   const dispatch = useAppDispatch();
 
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
-  const [selectedTask, setSelectedTask] = React.useState<TaskEntity | null>(null);
+  const [sidebar, setSidebar] = React.useState<{ open: boolean; task: TaskEntity | null }>({
+    open: false,
+    task: null,
+  });
 
   const tasks = useAppSelector(getTasksSelector);
 
@@ -32,13 +34,11 @@ export const Tasks = () => {
   };
 
   const handleEditTask = (data: TaskEntity) => {
-    setSelectedTask(data);
-    setSidebarOpen(true);
+    setSidebar({ open: true, task: data });
   };
 
   const handleCloseSidebar = () => {
-    setSidebarOpen(false);
-    setSelectedTask(null);
+    setSidebar({ open: false, task: null });
   };
 
   React.useEffect(() => {
@@ -51,7 +51,7 @@ export const Tasks = () => {
         <Title>Tasks</Title>
       </div>
       <div className={s.actions}>
-        <Button size="sm" onClick={() => setSidebarOpen(true)} icon="plus">
+        <Button size="sm" onClick={() => setSidebar({ ...sidebar, open: true })} icon="plus">
           Add Task
         </Button>
       </div>
@@ -68,9 +68,9 @@ export const Tasks = () => {
       </AnimatePresence>
 
       <TaskEditorSidebar
-        isOpen={sidebarOpen}
+        isOpen={sidebar.open}
         onClose={handleCloseSidebar}
-        {...(selectedTask && { item: selectedTask })}
+        {...(sidebar.task && { item: sidebar.task })}
       />
     </div>
   );

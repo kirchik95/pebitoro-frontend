@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import { auth } from './auth';
 import { tasks } from './tasks';
 
 axios.defaults.baseURL = '/api';
@@ -9,7 +10,7 @@ axios.interceptors.request.use(
     const token = localStorage.getItem('token');
 
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers.Authorization = `Bearer ${JSON.parse(token)}`;
     }
 
     return config;
@@ -32,4 +33,4 @@ axios.interceptors.response.use(
   },
 );
 
-export const api = { tasks };
+export const api = { tasks, auth };
