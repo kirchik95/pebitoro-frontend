@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import { signIn } from './actions';
 import { InitialState } from './types';
@@ -23,9 +23,8 @@ const authSlice = createSlice({
         state.isAuthenticated = true;
         state.error = null;
       })
-      .addCase(signIn.rejected, (state, action: PayloadAction<string>) => {
+      .addCase(signIn.rejected, (state) => {
         state.status = 'error';
-        state.error = action.payload;
       });
   },
 });
