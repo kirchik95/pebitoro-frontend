@@ -26,7 +26,7 @@ const tasksSlice = createSlice({
         state.status = 'failed';
       })
       .addCase(createTask.fulfilled, (state, action: PayloadAction<TaskEntity>) => {
-        state.tasks.push(action.payload);
+        state.tasks.unshift(action.payload);
       })
       .addCase(deleteTask.fulfilled, (state, action: PayloadAction<number>) => {
         state.tasks = state.tasks.filter((task) => task.id !== action.payload);
