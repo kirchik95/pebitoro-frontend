@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import cn from 'classnames';
 
+import { UserEntity } from '@entities/User';
+
 import { Avatar } from '../Avatar';
 import { Icon } from '../Icon';
 
@@ -10,9 +12,10 @@ import s from './ProfileMenu.module.css';
 
 interface ProfileMenuProps {
   className?: string;
+  user: UserEntity | null;
 }
 
-export const ProfileMenu = ({ className }: ProfileMenuProps) => {
+export const ProfileMenu = ({ className, user }: ProfileMenuProps) => {
   const navigate = useNavigate();
 
   const [menu, setMenu] = React.useState(false);
@@ -31,7 +34,9 @@ export const ProfileMenu = ({ className }: ProfileMenuProps) => {
         setMenu(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -40,7 +45,7 @@ export const ProfileMenu = ({ className }: ProfileMenuProps) => {
   return (
     <div className={cn(s.root, className)} ref={menuRef}>
       <div className={s.avatar} onClick={() => setMenu(!menu)}>
-        <Avatar size="md" />
+        <Avatar size="md" alt={`${user?.firstName.slice(0, 1)}${user?.lastName.slice(0, 1)}`} />
       </div>
 
       <AnimatePresence>
@@ -51,13 +56,25 @@ export const ProfileMenu = ({ className }: ProfileMenuProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -5 }}
           >
-            <ul>
-              <li>
-                <Icon name="user" width={16} height={16} />
+            <div className={s.dropdownHeader}>
+              <Avatar
+                size="lg"
+                alt={`${user?.firstName.slice(0, 1)}${user?.lastName.slice(0, 1)}`}
+              />
+              <div className={s.user}>
+                <span className={s.fullName}>
+                  {user?.firstName} {user?.lastName}
+                </span>
+                <span className={s.email}>{user?.email}</span>
+              </div>
+            </div>
+            <ul className={s.list}>
+              <li className={s.listItem}>
+                <Icon name="user" width={18} height={18} />
                 My Profile
               </li>
-              <li onClick={handleSignOut}>
-                <Icon name="log-out" width={16} height={16} />
+              <li className={s.listItem} onClick={handleSignOut}>
+                <Icon name="log-out" width={18} height={18} />
                 Sign out
               </li>
             </ul>
