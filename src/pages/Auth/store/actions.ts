@@ -8,7 +8,7 @@ export const signIn = createAsyncThunk(
     try {
       const response = await api.auth.signIn(data);
 
-      return response;
+      return { user: response.user };
     } catch (error) {
       console.error(error);
 

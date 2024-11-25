@@ -1,7 +1,9 @@
 .root {
+  position: relative;
+
   display: flex;
 }
 
-.avatar {
+.profile {
   margin-left: auto;
 }

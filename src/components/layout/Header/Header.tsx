@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { Avatar } from '@components/ui/Avatar';
+import { ProfileMenu } from '@components/ui/ProfileMenu';
 
 import { PageTitle } from '../PageTitle';
 
@@ -14,7 +14,7 @@ export const Header = ({ className }: HeaderProps) => {
   return (
     <div className={cn(s.root, className)}>
       <PageTitle />
-      <Avatar className={s.avatar} size="md" />
+      <ProfileMenu className={s.profile} />
     </div>
   );
 };
