@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '@core/redux/hooks';
 
 import { TaskEntity } from '@entities/Task';
 
-import { Title } from '@components/typography/Title';
 import { Button } from '@components/ui/Button';
 
 import { Task } from './components/Task';
@@ -47,9 +46,6 @@ export const Tasks = () => {
 
   return (
     <div>
-      <div className={s.header}>
-        <Title>Tasks</Title>
-      </div>
       <div className={s.actions}>
         <Button size="sm" onClick={() => setSidebar({ ...sidebar, open: true })} icon="plus">
           Add Task

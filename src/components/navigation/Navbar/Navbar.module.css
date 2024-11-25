@@ -4,8 +4,6 @@
   gap: var(--space-4);
   width: 220px;
   padding: var(--space-32) var(--space-16);
-
-  border-right: 1px solid var(--gray-200);
 }
 
 .link {

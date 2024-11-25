@@ -1,5 +1,8 @@
-import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
+
+import { Avatar } from '@components/ui/Avatar';
+
+import { PageTitle } from '../PageTitle';
 
 import s from './Header.module.css';
 
@@ -9,11 +12,9 @@ interface HeaderProps {
 
 export const Header = ({ className }: HeaderProps) => {
   return (
-    <header className={cn(s.root, className)}>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/tasks">Tasks</NavLink>
-      </nav>
-    </header>
+    <div className={cn(s.root, className)}>
+      <PageTitle />
+      <Avatar className={s.avatar} size="md" />
+    </div>
   );
 };
