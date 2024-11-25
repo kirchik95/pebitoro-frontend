@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { auth } from './auth';
+import { profile } from './profile';
 import { tasks } from './tasks';
 
 axios.defaults.baseURL = '/api';
@@ -33,4 +34,4 @@ axios.interceptors.response.use(
   },
 );
 
-export const api = { tasks, auth };
+export const api = { auth, profile, tasks };

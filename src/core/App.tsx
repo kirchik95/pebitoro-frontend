@@ -1,13 +1,23 @@
-import { Suspense } from 'react';
+import * as React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Container } from '@components/layout/Container';
 import { Header } from '@components/layout/Header';
 import { Navbar } from '@components/navigation/Navbar';
 
+import { getProfile } from '@pages/Auth/store/actions';
+
+import { useAppDispatch } from './redux/hooks';
+
 import s from './App.module.css';
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    void dispatch(getProfile());
+  }, [dispatch]);
+
   return (
     <div className={s.root}>
       <Navbar />
@@ -15,9 +25,9 @@ function App() {
         <main className={s.main}>
           <Container>
             <Header className={s.header} />
-            <Suspense fallback="Loading...">
+            <React.Suspense fallback="Loading...">
               <Outlet />
-            </Suspense>
+            </React.Suspense>
           </Container>
         </main>
       </div>

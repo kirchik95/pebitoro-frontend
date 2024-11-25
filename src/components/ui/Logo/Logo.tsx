@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 
 import s from './Logo.module.css';
@@ -7,5 +8,10 @@ interface LogoProps {
 }
 
 export const Logo = ({ className }: LogoProps) => {
-  return <div className={cn(s.root, className)}>Pebitoro</div>;
+  return (
+    <NavLink className={cn(s.root, className)} to="/">
+      <img src="/images/logo.svg" />
+      Pebitoro
+    </NavLink>
+  );
 };

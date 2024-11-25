@@ -31,9 +31,9 @@ export const Auth = ({ className }: AuthProps) => {
 
   const onSubmit: SubmitHandler<FormInput> = async (data) => {
     try {
-      const user = await dispatch(signIn(data)).unwrap();
+      const response = await dispatch(signIn(data)).unwrap();
 
-      localStorage.setItem('token', JSON.stringify(user.token));
+      localStorage.setItem('token', JSON.stringify(response.token));
 
       navigate('/', { replace: true });
     } catch (error) {

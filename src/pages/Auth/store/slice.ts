@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { UserEntity } from '@entities/User';
 
-import { signIn } from './actions';
+import { getProfile, signIn } from './actions';
 import { InitialState } from './types';
 
 const initialState: InitialState = {
@@ -28,6 +28,17 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(signIn.rejected, (state) => {
+        state.status = 'error';
+      })
+      .addCase(getProfile.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(getProfile.fulfilled, (state, action: PayloadAction<{ user: UserEntity }>) => {
+        state.status = 'success';
+        state.isAuthenticated = true;
+        state.user = action.payload.user;
+      })
+      .addCase(getProfile.rejected, (state) => {
         state.status = 'error';
       });
   },

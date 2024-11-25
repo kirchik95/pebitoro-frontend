@@ -8,7 +8,7 @@ export const signIn = createAsyncThunk(
     try {
       const response = await api.auth.signIn(data);
 
-      return { user: response.user };
+      return { user: response.user, token: response.token };
     } catch (error) {
       console.error(error);
 
@@ -16,3 +16,14 @@ export const signIn = createAsyncThunk(
     }
   },
 );
+
+export const getProfile = createAsyncThunk('auth/getProfile', async (_, thunkApi) => {
+  try {
+    const response = await api.profile.me();
+
+    return { user: response };
+  } catch (error) {
+    console.error(error);
+    return thunkApi.rejectWithValue(error);
+  }
+});
