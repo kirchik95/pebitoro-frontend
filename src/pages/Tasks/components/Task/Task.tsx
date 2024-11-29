@@ -24,7 +24,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
   };
 
   const handleChange = () => {
-    onChange({ id: item.id, status: item.status === 'completed' ? 'created' : 'completed' });
+    onChange({ id: item.id, status: item.status === 'done' ? 'created' : 'done' });
   };
 
   const handleEdit = () => {
@@ -33,7 +33,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
 
   return (
     <motion.div
-      className={cn(s.root, className, { [s.completed]: item.status === 'completed' })}
+      className={cn(s.root, className, { [s.completed]: item.status === 'done' })}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
@@ -45,7 +45,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
           size="md"
           label={item.title}
           onChange={handleChange}
-          value={item.status === 'completed'}
+          value={item.status === 'done'}
         />
         <div className={s.actions}>
           <Button className={cn(s.button, s.edit)} theme="secondary" onClick={handleEdit}>

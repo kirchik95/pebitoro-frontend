@@ -56,7 +56,7 @@ export const Sidebar = ({ className, isOpen, children, onClose }: SidebarProps) 
           >
             <div className={s.header}>
               <Button className={s.button} theme="secondary" onClick={onClose}>
-                <Icon name="close" />
+                <Icon name="close" width={20} height={20} />
               </Button>
             </div>
             <div className={s.content}>{children}</div>

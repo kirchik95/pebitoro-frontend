@@ -5,14 +5,14 @@
 
   display: flex;
 
-  background-color: rgb(102 112 133 / 70%);
+  background-color: rgb(102 112 133 / 50%);
 }
 
 .root {
   position: fixed;
-  top: 12px;
-  right: 12px;
-  bottom: 12px;
+  top: 9px;
+  right: 9px;
+  bottom: 9px;
   z-index: 1000;
 
   display: flex;
@@ -20,18 +20,15 @@
   width: 600px;
 
   background: white;
-  border-radius: var(--radius-xl);
-
-  box-shadow: 2px 0 10px rgb(0 0 0 / 10%);
+  border-radius: var(--radius-2xl);
 }
 
 .header {
   display: flex;
   align-items: center;
-  padding: var(--space-16);
-  margin-bottom: var(--space-12);
+  padding: var(--space-12) var(--space-20);
 
-  border-bottom: 1px solid var(--gray-300);
+  border-bottom: 1px solid var(--gray-200);
 }
 
 .header .button {
@@ -53,8 +50,4 @@
   span {
     margin: 0;
   }
-}
-
-.content {
-  padding: 0 var(--space-16);
 }

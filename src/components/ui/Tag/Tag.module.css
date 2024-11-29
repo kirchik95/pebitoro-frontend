@@ -1,0 +1,33 @@
+.root {
+  display: inline-flex;
+  gap: var(--space-4);
+
+  color: var(--gray-700);
+
+  font-weight: 500;
+
+  background-color: var(--base-white);
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+}
+
+.sm {
+  padding: 3px var(--space-8);
+
+  font-size: var(--text-xs);
+  line-height: 18px;
+}
+
+.md {
+  padding: 2px 9px;
+
+  font-size: var(--text-sm);
+  line-height: 20px;
+}
+
+.lg {
+  padding: var(--space-4) 10px;
+
+  font-size: var(--text-sm);
+  line-height: 20px;
+}

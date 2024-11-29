@@ -6,11 +6,14 @@ import { useAppDispatch } from '@core/redux/hooks';
 import { TaskEntity } from '@entities/Task';
 
 import { Button } from '@components/ui/Button';
-import { Input } from '@components/ui/Input';
 import { Sidebar } from '@components/ui/Sidebar';
-import { Textarea } from '@components/ui/Textarea';
 
 import { createTask } from '@pages/Tasks/store/actions';
+
+import { TaskDescription } from './components/TaskDescription';
+import { TaskMeta } from './components/TaskMeta';
+import { TaskTitle } from './components/TaskTitle';
+import { DEFAULT_TASK_DATA } from './constants';
 
 import s from './TaskEditorSidebar.module.css';
 
@@ -24,51 +27,42 @@ interface TaskEditorSidebarProps {
 export const TaskEditorSidebar = ({ className, isOpen, item, onClose }: TaskEditorSidebarProps) => {
   const dispatch = useAppDispatch();
 
-  const [data, setData] = React.useState({
-    title: item?.title || '',
-    description: item?.description || '',
-  });
+  const [data, setData] = React.useState(() => ({ ...DEFAULT_TASK_DATA, ...item }));
 
-  const handleChange = (
-    field: string,
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setData({ ...data, [field]: event.target.value });
+  const handleChange = (field: string, value: string) => {
+    setData((prevData) => ({ ...prevData, [field]: value }));
   };
 
   const handleConfirm = async () => {
     await dispatch(createTask(data));
 
-    setData({ title: '', description: '' });
-
+    setData(DEFAULT_TASK_DATA);
     onClose();
   };
 
   React.useEffect(() => {
-    setData(item ? item : { title: '', description: '' });
+    setData({ ...DEFAULT_TASK_DATA, ...item });
   }, [item]);
 
   return (
     <Sidebar isOpen={isOpen} onClose={onClose}>
       <div className={cn(s.root, className)}>
         <div className={s.content}>
-          <Input
-            className={s.input}
-            title="Title:"
-            value={data.title}
-            onChange={(event) => handleChange('title', event)}
-          />
-          <Textarea
-            className={s.textarea}
-            title="Description:"
-            placeholder="Add your description..."
-            value={data.description}
-            onChange={(event) => handleChange('description', event)}
+          <TaskTitle value={data.title} onChange={handleChange} />
+          <TaskDescription value={data.description} onChange={handleChange} />
+          <TaskMeta
+            status={data.status}
+            priority={data.priority}
+            category={data.category}
+            onChange={handleChange}
           />
         </div>
+
         <div className={s.footer}>
-          <Button onClick={onClose}>Cancel</Button>
-          <Button onClick={handleConfirm}>Save</Button>
+          <Button theme="secondary" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button onClick={handleConfirm}>Create</Button>
         </div>
       </div>
     </Sidebar>

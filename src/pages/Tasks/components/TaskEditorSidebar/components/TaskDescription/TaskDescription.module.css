@@ -1,0 +1,23 @@
+.root {
+  max-width: 100%;
+
+  textarea {
+    height: auto;
+    padding: 0;
+    overflow: hidden;
+
+    font-size: var(--text-md);
+
+    border-color: transparent;
+
+    resize: none;
+
+    &::placeholder {
+      font-size: var(--text-lg);
+    }
+
+    &:focus {
+      border-color: transparent;
+    }
+  }
+}

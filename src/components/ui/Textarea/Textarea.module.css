@@ -15,25 +15,24 @@
 
   textarea {
     width: 100%;
-    padding: var(--space-8) var(--space-40) var(--space-8) var(--space-12);
+    padding: var(--space-12) 14px;
 
     color: var(--gray-900);
     font-size: var(--text-md);
+    line-height: 24px;
 
     border: 1px solid var(--gray-300);
     border-radius: var(--radius-md);
 
-    transition: border 300ms linear;
+    transition: all 0.2s;
 
     &::placeholder {
       color: var(--gray-400);
-      font-size: var(--text-sm);
-      font-weight: 400;
     }
 
     &:focus {
-      border-color: var(--primary-400);
-      outline: 0;
+      border-color: var(--primary-500);
+      outline: transparent;
     }
   }
 }
