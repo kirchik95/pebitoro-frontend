@@ -9,19 +9,15 @@
   box-shadow: var(--shadow-sm);
 }
 
-.root.completed {
-  text-decoration: line-through;
-
-  background: var(--gray-50);
-
-  .checkbox {
-    opacity: 0.7;
-  }
-}
-
 .header {
   display: flex;
-  margin-bottom: var(--space-4);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-20);
+  max-width: 70%;
 }
 
 .actions {
@@ -59,7 +55,41 @@
   }
 }
 
-.description {
+.content {
   max-width: 50%;
   padding-left: var(--space-32);
+  margin-top: var(--space-8);
+
+  color: var(--gray-500);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding-left: var(--space-32);
+  margin-top: var(--space-12);
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.root.completed {
+  background: var(--gray-50);
+
+  .checkbox {
+    text-decoration: line-through;
+
+    opacity: 0.7;
+  }
+
+  .description {
+    text-decoration: line-through;
+  }
 }

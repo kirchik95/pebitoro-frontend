@@ -1,4 +1,7 @@
+import { format } from 'date-fns';
 import { motion } from 'motion/react';
+import { TaskPriority } from 'src/shared/components/TaskPriority';
+import { TaskStatus } from 'src/shared/components/TaskStatus';
 import cn from 'classnames';
 
 import { TaskEntity } from '@entities/Task';
@@ -40,13 +43,17 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
       transition={{ duration: 0.2 }}
     >
       <div className={s.header}>
-        <Checkbox
-          className={s.checkbox}
-          size="md"
-          label={item.title}
-          onChange={handleChange}
-          value={item.status === 'done'}
-        />
+        <div className={s.title}>
+          <Checkbox
+            className={s.checkbox}
+            size="md"
+            label={item.title}
+            onChange={handleChange}
+            value={item.status === 'done'}
+          />
+
+          <TaskStatus value={item.status} />
+        </div>
         <div className={s.actions}>
           <Button className={cn(s.button, s.edit)} theme="secondary" onClick={handleEdit}>
             <Icon name="pencil" width={16} height={16} />
@@ -56,7 +63,17 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
           </Button>
         </div>
       </div>
-      <Text className={s.description}>{item.description}</Text>
+      <div className={s.content}>
+        <Text className={s.description}>{item.description}</Text>
+      </div>
+
+      <div className={s.footer}>
+        <span className={s.date}>
+          <Icon name="calendar" width={18} height={18} />
+          {format(item.createdAt, 'MMM dd, yyyy')}
+        </span>
+        <TaskPriority value={item.priority} />
+      </div>
     </motion.div>
   );
 };

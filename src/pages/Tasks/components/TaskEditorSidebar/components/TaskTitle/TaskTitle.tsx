@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { Input } from '@components/ui/Input';
+import { Textarea } from '@components/ui/Textarea';
 
 import s from './TaskTitle.module.css';
 
@@ -12,12 +12,12 @@ interface TaskTitleProps {
 }
 
 export const TaskTitle = ({ className, value, onChange }: TaskTitleProps) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange('title', event.target.value);
   };
 
   return (
-    <Input
+    <Textarea
       className={cn(s.root, className)}
       placeholder="Task name"
       value={value}

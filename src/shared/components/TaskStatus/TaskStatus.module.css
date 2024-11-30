@@ -1,0 +1,6 @@
+.root {
+  padding-right: var(--space-12);
+  padding-left: var(--space-12);
+
+  font-weight: 600;
+}

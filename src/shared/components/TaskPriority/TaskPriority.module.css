@@ -1,0 +1,8 @@
+.root {
+  padding: 2px var(--space-12);
+
+  font-weight: 600;
+
+  border: 0;
+  border-radius: var(--radius-xl);
+}
