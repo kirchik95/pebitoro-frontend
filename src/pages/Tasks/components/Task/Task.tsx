@@ -7,9 +7,10 @@ import cn from 'classnames';
 import { TaskEntity } from '@entities/Task';
 
 import { Text } from '@components/typography/Text';
-import { Button } from '@components/ui/Button';
 import { Checkbox } from '@components/ui/Checkbox';
 import { Icon } from '@components/ui/Icon';
+
+import { TaskActions } from './components/TaskActions';
 
 import s from './Task.module.css';
 
@@ -22,12 +23,12 @@ interface TaskProps {
 }
 
 export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps) => {
-  const handleDelete = () => {
-    onDelete(item.id);
-  };
-
   const handleChange = () => {
     onChange({ id: item.id, status: item.status === 'done' ? 'created' : 'done' });
+  };
+
+  const handleDelete = () => {
+    onDelete(item.id);
   };
 
   const handleEdit = () => {
@@ -54,14 +55,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
 
           <TaskStatus value={item.status} />
         </div>
-        <div className={s.actions}>
-          <Button className={cn(s.button, s.edit)} theme="secondary" onClick={handleEdit}>
-            <Icon name="pencil" width={16} height={16} />
-          </Button>
-          <Button className={cn(s.button, s.delete)} theme="secondary" onClick={handleDelete}>
-            <Icon name="trash" width={16} height={16} />
-          </Button>
-        </div>
+        <TaskActions onEdit={handleEdit} onDelete={handleDelete} />
       </div>
       <div className={s.content}>
         <Text className={s.description}>{item.description}</Text>
