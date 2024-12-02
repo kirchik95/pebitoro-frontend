@@ -2,13 +2,14 @@ import * as React from 'react';
 import cn from 'classnames';
 
 import { useAppDispatch } from '@core/redux/hooks';
+import { getChangedFields } from '@core/utils/getChangedFields';
 
 import { TaskEntity } from '@entities/Task';
 
 import { Button } from '@components/ui/Button';
 import { Sidebar } from '@components/ui/Sidebar';
 
-import { createTask } from '@pages/Tasks/store/actions';
+import { createTask, updateTask } from '@pages/Tasks/store/actions';
 
 import { TaskDescription } from './components/TaskDescription';
 import { TaskMeta } from './components/TaskMeta';
@@ -34,7 +35,13 @@ export const TaskEditorSidebar = ({ className, isOpen, item, onClose }: TaskEdit
   };
 
   const handleConfirm = async () => {
-    await dispatch(createTask(data));
+    if (item) {
+      const fields = getChangedFields(item, data);
+
+      await dispatch(updateTask({ id: item.id, ...fields }));
+    } else {
+      await dispatch(createTask(data));
+    }
 
     setData(DEFAULT_TASK_DATA);
     onClose();
@@ -62,7 +69,7 @@ export const TaskEditorSidebar = ({ className, isOpen, item, onClose }: TaskEdit
           <Button theme="secondary" onClick={onClose}>
             Cancel
           </Button>
-          <Button onClick={handleConfirm}>Create</Button>
+          <Button onClick={handleConfirm}>{item ? 'Save' : 'Create'}</Button>
         </div>
       </div>
     </Sidebar>

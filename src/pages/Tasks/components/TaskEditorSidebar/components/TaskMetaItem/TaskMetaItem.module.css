@@ -11,8 +11,17 @@
   font-size: var(--text-sm);
 }
 
-.value {
+.item {
   position: relative;
+}
+
+.badge {
+  padding-right: 12px;
+  padding-left: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
 }
 
 .options {

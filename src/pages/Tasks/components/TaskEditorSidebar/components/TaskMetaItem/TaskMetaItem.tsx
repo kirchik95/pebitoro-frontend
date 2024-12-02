@@ -5,6 +5,8 @@ import cn from 'classnames';
 import { Badge } from '@components/ui/Badge';
 import { Icon } from '@components/ui/Icon';
 
+import { Item } from './types';
+
 import s from './TaskMetaItem.module.css';
 
 interface TaskMetaItemProps {
@@ -12,9 +14,9 @@ interface TaskMetaItemProps {
   field: string;
   icon?: string;
   label: string;
-  value: string;
+  item: Item;
   dot?: boolean;
-  options?: Record<string, string>;
+  options?: Record<string, Item>;
   onClick?: (field: string, option: string) => void;
 }
 
@@ -23,7 +25,7 @@ export const TaskMetaItem = ({
   icon,
   field,
   label,
-  value,
+  item,
   dot,
   options = {},
   onClick,
@@ -67,8 +69,19 @@ export const TaskMetaItem = ({
     <div className={cn(s.root, className)}>
       {icon && <Icon name={icon} width={16} height={16} />}
       <span className={s.name}>{label}</span>
-      <div className={s.value} ref={dropdownRef}>
-        <Badge value={value} onClick={toggleDropdown} dot={dot} />
+      <div className={s.item} ref={dropdownRef}>
+        <Badge
+          className={s.badge}
+          value={item.label}
+          onClick={toggleDropdown}
+          dot={dot}
+          icon={item.icon}
+          style={{
+            backgroundColor: item.backgroundColor,
+            borderColor: item.borderColor,
+            color: item.color,
+          }}
+        />
         {hasOptions && (
           <AnimatePresence>
             {isDropdownVisible && (
@@ -82,9 +95,12 @@ export const TaskMetaItem = ({
                   <span
                     key={`${key}_${index}`}
                     className={s.optionItem}
-                    onClick={() => handleOptionClick(key)}
+                    onClick={() => handleOptionClick(options[key].value)}
+                    style={{
+                      color: options[key].color,
+                    }}
                   >
-                    {options[key]}
+                    {options[key].label}
                   </span>
                 ))}
               </motion.div>

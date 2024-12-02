@@ -1,8 +1,7 @@
+import { TASK_PRIORITIES, TASK_STATUSES } from 'src/shared/constants/task/constants';
 import cn from 'classnames';
 
 import { TaskMetaItem } from '../TaskMetaItem';
-
-import { TASK_PRIORITIES, TASK_STATUSES } from './constants';
 
 import s from './TaskMeta.module.css';
 
@@ -14,7 +13,7 @@ interface TaskMetaProps {
   onChange: (field: string, value: string) => void;
 }
 
-export const TaskMeta = ({ className, status, priority, category, onChange }: TaskMetaProps) => {
+export const TaskMeta = ({ className, status, priority, onChange }: TaskMetaProps) => {
   const handleOptionClick = (field: string, option: string) => {
     onChange(field, option);
   };
@@ -25,8 +24,7 @@ export const TaskMeta = ({ className, status, priority, category, onChange }: Ta
         icon="check-verified"
         field="status"
         label="Status"
-        value={TASK_STATUSES[status]}
-        dot
+        item={TASK_STATUSES[status]}
         options={TASK_STATUSES}
         onClick={handleOptionClick}
       />
@@ -35,12 +33,10 @@ export const TaskMeta = ({ className, status, priority, category, onChange }: Ta
         icon="flag"
         field="priority"
         label="Priority"
-        value={TASK_PRIORITIES[priority]}
+        item={TASK_PRIORITIES[priority]}
         options={TASK_PRIORITIES}
         onClick={handleOptionClick}
       />
-
-      <TaskMetaItem icon="tag" field="category" label="Category" value={category} />
     </div>
   );
 };
