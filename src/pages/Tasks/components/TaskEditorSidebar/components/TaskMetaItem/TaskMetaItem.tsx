@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isEmpty } from 'lodash';
+import { isEmpty, uniq, xor } from 'lodash';
 import { AnimatePresence, motion } from 'motion/react';
 import cn from 'classnames';
 
@@ -45,17 +45,10 @@ export const TaskMetaItem = ({
   };
 
   const handleOptionClick = (option: string | number | number[]) => {
-    if (multiple) {
-      const selectedValues = selectedItems.map((item) => item.value);
-      const optionValues = [...new Set([...selectedValues, option])];
+    const selectedValues = selectedItems.map((item) => item.value);
+    const updatedValues = multiple ? (uniq(xor(selectedValues, [option])) as number[]) : option;
 
-      onClick(field, optionValues as number[]);
-
-      return;
-    } else {
-      onClick(field, option);
-    }
-
+    onClick(field, updatedValues);
     setDropdownVisible(false);
   };
 
