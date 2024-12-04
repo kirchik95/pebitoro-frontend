@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Outlet } from 'react-router-dom';
+import { getCategories } from 'src/shared/store/categories/actions';
 
 import { Container } from '@components/layout/Container';
 import { Header } from '@components/layout/Header';
@@ -16,6 +17,7 @@ function App() {
 
   React.useEffect(() => {
     void dispatch(getProfile());
+    void dispatch(getCategories());
   }, [dispatch]);
 
   return (

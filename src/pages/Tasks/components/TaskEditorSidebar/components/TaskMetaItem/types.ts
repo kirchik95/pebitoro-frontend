@@ -1,5 +1,5 @@
 export type Item = {
-  value: string;
+  value: string | number | number[];
   label: string;
   icon?: string;
   backgroundColor?: string;

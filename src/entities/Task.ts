@@ -4,7 +4,7 @@ export interface TaskEntity {
   description: string;
   priority: 'low' | 'medium' | 'high';
   status: 'created' | 'in_progress' | 'done' | 'archived';
-  category: string;
+  categories: number[] | [];
   createdAt: string;
   updatedAt: string;
 }

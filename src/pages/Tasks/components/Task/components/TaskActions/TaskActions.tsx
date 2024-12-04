@@ -34,7 +34,7 @@ export const TaskActions = ({ className, onEdit, onDelete }: TaskActionsProps) =
   return (
     <div className={cn(s.root, className)}>
       <Button
-        className={cn(s.button, s.more)}
+        className={cn(s.button, s.more, { [s.open]: menuVisible })}
         theme="secondary"
         onClick={() => setMenuVisible(!menuVisible)}
       >

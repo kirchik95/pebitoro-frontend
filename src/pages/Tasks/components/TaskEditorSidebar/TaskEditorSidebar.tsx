@@ -30,7 +30,7 @@ export const TaskEditorSidebar = ({ className, isOpen, item, onClose }: TaskEdit
 
   const [data, setData] = React.useState(() => ({ ...DEFAULT_TASK_DATA, ...item }));
 
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: string, value: string | number | number[]) => {
     setData((prevData) => ({ ...prevData, [field]: value }));
   };
 
@@ -60,7 +60,7 @@ export const TaskEditorSidebar = ({ className, isOpen, item, onClose }: TaskEdit
           <TaskMeta
             status={data.status}
             priority={data.priority}
-            category={data.category}
+            categories={data.categories}
             onChange={handleChange}
           />
         </div>

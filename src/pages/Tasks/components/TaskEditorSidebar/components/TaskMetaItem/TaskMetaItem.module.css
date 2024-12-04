@@ -13,6 +13,10 @@
 
 .item {
   position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
 }
 
 .badge {
@@ -32,7 +36,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  min-width: 126px;
+  min-width: 140px;
+  padding: var(--space-4);
   margin-top: var(--space-32);
   overflow: hidden;
 
@@ -50,9 +55,18 @@
 }
 
 .optionItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
   padding: var(--space-8);
+
+  border-radius: var(--radius-xs);
 
   &:hover {
     background-color: var(--gray-100);
+  }
+
+  svg {
+    margin-left: auto;
   }
 }

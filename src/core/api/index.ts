@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { auth } from './auth';
+import { categories } from './categories';
 import { profile } from './profile';
 import { tasks } from './tasks';
 
@@ -34,4 +35,4 @@ axios.interceptors.response.use(
   },
 );
 
-export const api = { auth, profile, tasks };
+export const api = { auth, profile, categories, tasks };

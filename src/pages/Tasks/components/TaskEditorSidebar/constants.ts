@@ -5,5 +5,5 @@ export const DEFAULT_TASK_DATA: Omit<TaskEntity, 'id' | 'createdAt' | 'updatedAt
   description: '',
   priority: 'low',
   status: 'created',
-  category: '',
+  categories: [],
 };

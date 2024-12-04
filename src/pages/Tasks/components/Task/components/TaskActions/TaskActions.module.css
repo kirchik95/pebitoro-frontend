@@ -2,27 +2,28 @@
   margin-left: auto;
 }
 
-.more {
-  &.button {
-    padding: 0;
+.more.button {
+  padding: var(--space-8);
 
-    font-size: 0;
+  font-size: 0;
 
-    border: 0;
+  border: 0;
 
-    box-shadow: none;
-    transition: opacity 0.3s;
+  box-shadow: none;
+  transition: opacity 0.3s;
 
-    &:hover {
-      background: none;
-      opacity: 0.5;
-    }
+  &:hover {
+    background-color: var(--gray-100);
   }
+}
+
+.more.open {
+  background-color: var(--gray-100);
 }
 
 .actions {
   position: absolute;
-  top: 25px;
+  top: 40px;
   right: 0;
 
   display: flex;

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { isEmpty } from 'lodash';
 import { AnimatePresence, motion } from 'motion/react';
 import cn from 'classnames';
 
@@ -14,10 +15,11 @@ interface TaskMetaItemProps {
   field: string;
   icon?: string;
   label: string;
-  item: Item;
+  selectedItems: Item[];
   dot?: boolean;
+  multiple?: boolean;
   options?: Record<string, Item>;
-  onClick?: (field: string, option: string) => void;
+  onClick: (field: string, option: string | number | number[]) => void;
 }
 
 export const TaskMetaItem = ({
@@ -25,25 +27,35 @@ export const TaskMetaItem = ({
   icon,
   field,
   label,
-  item,
+  selectedItems,
   dot,
+  multiple = false,
   options = {},
   onClick,
 }: TaskMetaItemProps) => {
   const [isDropdownVisible, setDropdownVisible] = React.useState(false);
-
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  const hasOptions = Boolean(Object.keys(options).length);
+  const hasOptions = !isEmpty(options);
 
   const toggleDropdown = () => {
     if (!hasOptions) return;
 
-    setDropdownVisible(!isDropdownVisible);
+    setDropdownVisible((prev) => !prev);
   };
 
-  const handleOptionClick = (option: string) => {
-    onClick?.(field, option);
+  const handleOptionClick = (option: string | number | number[]) => {
+    if (multiple) {
+      const selectedValues = selectedItems.map((item) => item.value);
+      const optionValues = [...new Set([...selectedValues, option])];
+
+      onClick(field, optionValues as number[]);
+
+      return;
+    } else {
+      onClick(field, option);
+    }
+
     setDropdownVisible(false);
   };
 
@@ -70,18 +82,25 @@ export const TaskMetaItem = ({
       {icon && <Icon name={icon} width={16} height={16} />}
       <span className={s.name}>{label}</span>
       <div className={s.item} ref={dropdownRef}>
-        <Badge
-          className={s.badge}
-          value={item.label}
-          onClick={toggleDropdown}
-          dot={dot}
-          icon={item.icon}
-          style={{
-            backgroundColor: item.backgroundColor,
-            borderColor: item.borderColor,
-            color: item.color,
-          }}
-        />
+        {selectedItems.length ? (
+          selectedItems.map((item) => (
+            <Badge
+              key={item.label}
+              className={s.badge}
+              value={item.label}
+              onClick={toggleDropdown}
+              dot={dot}
+              icon={item.icon}
+              style={{
+                backgroundColor: item.backgroundColor,
+                borderColor: item.borderColor,
+                color: item.color,
+              }}
+            />
+          ))
+        ) : (
+          <span onClick={toggleDropdown}>+ add</span>
+        )}
         {hasOptions && (
           <AnimatePresence>
             {isDropdownVisible && (
@@ -91,18 +110,24 @@ export const TaskMetaItem = ({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
               >
-                {Object.keys(options).map((key, index) => (
-                  <span
-                    key={`${key}_${index}`}
-                    className={s.optionItem}
-                    onClick={() => handleOptionClick(options[key].value)}
-                    style={{
-                      color: options[key].color,
-                    }}
-                  >
-                    {options[key].label}
-                  </span>
-                ))}
+                {Object.keys(options).map((key, index) => {
+                  const isOptionSelected = selectedItems.some(
+                    (item) => item.value === options[key].value,
+                  );
+                  return (
+                    <span
+                      key={`${key}_${index}`}
+                      className={s.optionItem}
+                      onClick={() => handleOptionClick(options[key].value)}
+                      style={{
+                        color: options[key].color,
+                      }}
+                    >
+                      {options[key].label}
+                      {isOptionSelected && <Icon name="check-circle" width={16} height={16} />}
+                    </span>
+                  );
+                })}
               </motion.div>
             )}
           </AnimatePresence>
