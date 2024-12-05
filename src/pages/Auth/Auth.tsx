@@ -1,5 +1,5 @@
-import { NavLink, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { NavLink, useNavigate } from 'react-router';
 import cn from 'classnames';
 
 import { useAppDispatch } from '@core/redux/hooks';
@@ -35,7 +35,7 @@ export const Auth = ({ className }: AuthProps) => {
 
       localStorage.setItem('token', JSON.stringify(response.token));
 
-      navigate('/', { replace: true });
+      void navigate('/', { replace: true });
     } catch (error) {
       console.error(error);
     }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router';
 
 import App from '@core/App';
 
@@ -9,29 +9,22 @@ const Auth = React.lazy(() => import('@pages/Auth'));
 const Home = React.lazy(() => import('@pages/Home'));
 const Tasks = React.lazy(() => import('@pages/Tasks'));
 
-export const router = createBrowserRouter(
-  [
-    { path: '/auth', element: React.createElement(Auth) },
-    {
-      path: '/',
-      element: React.createElement(App),
-      children: [
-        {
-          element: React.createElement(ProtectedRoutes),
-          children: [
-            { path: '/', index: true, element: React.createElement(Home) },
-            {
-              path: '/tasks/*',
-              element: React.createElement(Tasks),
-            },
-          ],
-        },
-      ],
-    },
-  ],
+export const router = createBrowserRouter([
+  { path: '/auth', element: React.createElement(Auth) },
   {
-    future: {
-      v7_relativeSplatPath: true,
-    },
+    path: '/',
+    element: React.createElement(App),
+    children: [
+      {
+        element: React.createElement(ProtectedRoutes),
+        children: [
+          { path: '/', index: true, element: React.createElement(Home) },
+          {
+            path: '/tasks/*',
+            element: React.createElement(Tasks),
+          },
+        ],
+      },
+    ],
   },
-);
+]);

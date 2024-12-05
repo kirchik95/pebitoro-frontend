@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import { getCategories } from 'src/shared/store/categories/actions';
 
 import { Container } from '@components/layout/Container';

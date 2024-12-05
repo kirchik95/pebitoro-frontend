@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
+import { useNavigate } from 'react-router';
 import cn from 'classnames';
 
 import { UserEntity } from '@entities/User';
@@ -25,7 +25,7 @@ export const ProfileMenu = ({ className, user }: ProfileMenuProps) => {
   const handleSignOut = () => {
     localStorage.removeItem('token');
 
-    navigate('/auth');
+    void navigate('/auth');
   };
 
   React.useEffect(() => {
