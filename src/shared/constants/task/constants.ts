@@ -23,9 +23,14 @@ export const TASK_PRIORITIES = {
 };
 
 export const TASK_STATUSES = {
-  created: {
-    value: 'created',
-    label: 'Created',
+  backlog: {
+    value: 'backlog',
+    label: 'Backlog',
+    icon: 'circle-cut',
+  },
+  todo: {
+    value: 'todo',
+    label: 'To Do',
     icon: 'circle-cut',
   },
   in_progress: {

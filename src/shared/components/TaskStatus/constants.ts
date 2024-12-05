@@ -1,6 +1,10 @@
 export const TASK_STATUSES = {
-  created: {
-    label: 'Created',
+  backlog: {
+    label: 'Backlog',
+    icon: 'circle-cut',
+  },
+  todo: {
+    label: 'To Do',
     icon: 'circle-cut',
   },
   in_progress: {

@@ -11,7 +11,7 @@ import s from './TaskMeta.module.css';
 
 interface TaskMetaProps {
   className?: string;
-  status: 'created' | 'in_progress' | 'done' | 'archived';
+  status: 'backlog' | 'todo' | 'in_progress' | 'done' | 'archived';
   priority: 'low' | 'medium' | 'high';
   categories: number[] | [];
   onChange: (field: string, value: string | number | number[]) => void;

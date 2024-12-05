@@ -3,7 +3,7 @@ export interface TaskEntity {
   title: string;
   description: string;
   priority: 'low' | 'medium' | 'high';
-  status: 'created' | 'in_progress' | 'done' | 'archived';
+  status: 'backlog' | 'todo' | 'in_progress' | 'done' | 'archived';
   categories: number[] | [];
   createdAt: string;
   updatedAt: string;
