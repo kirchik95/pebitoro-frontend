@@ -1,4 +1,4 @@
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import { defineConfig, loadEnv } from 'vite';
 import checker from 'vite-plugin-checker';
 import tsconfigPaths from 'vite-tsconfig-paths';
@@ -32,7 +32,11 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
-      react(),
+      react({
+        babel: {
+          plugins: [['babel-plugin-react-compiler', { target: '19' }]],
+        },
+      }),
       tsconfigPaths(),
       checker({
         overlay: env.VITE_OVERLAY === 'true',
@@ -42,7 +46,6 @@ export default defineConfig(({ mode }) => {
           lintCommand: 'eslint "./src/**/*.{ts, tsx}"',
         },
       }),
-      ['babel-plugin-react-compiler', { target: 19 }],
     ],
   };
 });
