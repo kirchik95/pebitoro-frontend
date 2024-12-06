@@ -23,7 +23,6 @@ interface TaskProps {
 }
 
 export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps) => {
-  console.log('item', item);
   const handleChange = () => {
     onChange({ id: item.id, status: item.status === 'done' ? 'todo' : 'done' });
   };
