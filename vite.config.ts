@@ -42,6 +42,7 @@ export default defineConfig(({ mode }) => {
           lintCommand: 'eslint "./src/**/*.{ts, tsx}"',
         },
       }),
+      ['babel-plugin-react-compiler', { target: 19 }],
     ],
   };
 });
