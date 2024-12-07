@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { debounce } from 'lodash';
 import { AnimatePresence } from 'motion/react';
 
 import { useAppDispatch, useAppSelector } from '@core/redux/hooks';
@@ -6,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '@core/redux/hooks';
 import { TaskEntity } from '@entities/Task';
 
 import { Button } from '@components/ui/Button';
+import { Input } from '@components/ui/Input';
 
 import { Task } from './components/Task';
 import { TaskEditorSidebar } from './components/TaskEditorSidebar';
@@ -23,6 +25,14 @@ export const Tasks = () => {
   });
 
   const tasks = useAppSelector(getTasksSelector);
+
+  const handleSearch = React.useMemo(
+    () =>
+      debounce((value: string) => {
+        void dispatch(getTasks({ search: value }));
+      }, 300),
+    [dispatch],
+  );
 
   const handleDeleteTask = (id: number) => {
     void dispatch(deleteTask(id));
@@ -46,10 +56,17 @@ export const Tasks = () => {
 
   return (
     <div>
-      <div className={s.actions}>
+      <div className={s.header}>
         <Button size="sm" onClick={() => setSidebar({ ...sidebar, open: true })} icon="plus">
           Add Task
         </Button>
+
+        <Input
+          className={s.search}
+          placeholder="Search"
+          icon="search-md"
+          onChange={(event) => handleSearch(event.target.value)}
+        />
       </div>
       <AnimatePresence initial={false}>
         {tasks.map((task) => (

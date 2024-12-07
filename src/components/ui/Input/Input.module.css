@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   max-width: 320px;
-  margin-bottom: var(--space-20);
 
   label {
     width: 100%;
@@ -12,30 +11,50 @@
     font-size: var(--text-sm);
     font-weight: 500;
   }
+}
 
-  input {
-    width: 100%;
-    padding: var(--space-8) var(--space-40) var(--space-8) var(--space-12);
+.inputWrapper {
+  position: relative;
+}
 
-    color: var(--gray-900);
-    font-size: var(--text-md);
-    font-weight: 400;
-    line-height: 24px;
+.input {
+  width: 100%;
+  padding: var(--space-8) var(--space-40) var(--space-8) var(--space-12);
 
-    border: 1px solid var(--gray-300);
-    border-radius: var(--radius-sm);
+  color: var(--gray-900);
+  font-size: var(--text-md);
+  font-weight: 400;
+  line-height: 24px;
 
-    box-shadow: var(--shadow-xs);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-md);
 
-    transition: all 0.2s;
+  box-shadow: var(--shadow-xs);
 
-    &::placeholder {
-      color: var(--gray-400);
-    }
+  transition: all 0.2s;
 
-    &:focus {
-      border-color: var(--primary-500);
-      outline: transparent;
-    }
+  &.paddingLeft {
+    padding-left: var(--space-40);
+  }
+
+  &::placeholder {
+    color: var(--gray-400);
+  }
+
+  &:focus {
+    border-color: var(--primary-500);
+    outline: transparent;
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-12);
+
+  transform: translateY(-50%);
+
+  path {
+    stroke: var(--gray-400);
   }
 }

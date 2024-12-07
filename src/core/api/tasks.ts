@@ -2,9 +2,16 @@ import axios from 'axios';
 
 import { TaskEntity } from '@entities/Task';
 
+export type GetTasksParams = {
+  search?: string;
+  status?: string;
+  priority?: string;
+  categories?: number[];
+};
+
 export const tasks = {
-  getTasks: async () => {
-    const response = await axios.get<TaskEntity[]>('/tasks');
+  getTasks: async (params?: GetTasksParams) => {
+    const response = await axios.get<TaskEntity[]>('/tasks', { params });
 
     return response.data;
   },

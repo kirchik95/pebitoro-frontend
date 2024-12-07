@@ -1,3 +1,14 @@
-.actions {
+.header {
+  display: flex;
+  align-items: center;
   margin-bottom: var(--space-20);
+}
+
+.search {
+  margin-left: auto;
+
+  input {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
 }

@@ -37,8 +37,8 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "@types/lodash": "^4.17.13",
     "@types/node": "^22.10.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitejs/plugin-react-swc": "^3.7.2",
     "babel-plugin-react-compiler": "^19.0.0-beta-df7b47d-20241124",
@@ -69,8 +69,8 @@
     "vite-tsconfig-paths": "^5.1.2"
   },
   "overrides": {
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.1"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,json,css,scss,md}": [

@@ -1,16 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { api } from '@core/api';
+import { GetTasksParams } from '@core/api/tasks';
 
 import { TaskEntity } from '@entities/Task';
 
-export const getTasks = createAsyncThunk('tasks/getTasks', async (_, thunkApi) => {
-  try {
-    return await api.tasks.getTasks();
-  } catch (error) {
-    return thunkApi.rejectWithValue(error);
-  }
-});
+export const getTasks = createAsyncThunk(
+  'tasks/getTasks',
+  async (params: GetTasksParams | undefined, thunkApi) => {
+    try {
+      console.log('params', params);
+      return await api.tasks.getTasks(params);
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  },
+);
 
 export const createTask = createAsyncThunk(
   'tasks/createTask',
