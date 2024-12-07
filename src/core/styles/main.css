@@ -1,6 +1,8 @@
 body {
   color: var(--gray-600);
   font-family: 'Inter Variable', sans-serif;
+
+  background-color: var(--gray-50);
 }
 
 h1,

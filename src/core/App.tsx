@@ -22,14 +22,16 @@ function App() {
 
   return (
     <div className={s.root}>
-      <Navbar />
+      <Navbar className={s.navigation} />
       <div className={s.layout}>
         <main className={s.main}>
           <Container>
             <Header className={s.header} />
-            <React.Suspense fallback="Loading...">
-              <Outlet />
-            </React.Suspense>
+            <div className={s.content}>
+              <React.Suspense fallback="Loading...">
+                <Outlet />
+              </React.Suspense>
+            </div>
           </Container>
         </main>
       </div>

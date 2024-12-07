@@ -22,6 +22,10 @@ export const Navbar = ({ className }: NavbarProps) => {
         <Icon name="tasks" />
         Tasks
       </NavLink>
+      <NavLink className={({ isActive }) => cn(s.link, { [s.active]: isActive })} to="/settings">
+        <Icon name="gear" />
+        Settings
+      </NavLink>
     </nav>
   );
 };
