@@ -9,7 +9,6 @@ export const getTasks = createAsyncThunk(
   'tasks/getTasks',
   async (params: GetTasksParams | undefined, thunkApi) => {
     try {
-      console.log('params', params);
       return await api.tasks.getTasks(params);
     } catch (error) {
       return thunkApi.rejectWithValue(error);

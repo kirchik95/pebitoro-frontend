@@ -40,12 +40,12 @@
 }
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 400px;
-  margin: 0 auto;
-}
-
-.form {
   padding: var(--space-32);
+  margin: 0 auto;
 
   background: var(--base-white);
   border: 1px solid var(--gray-100);
@@ -58,7 +58,7 @@
   margin-bottom: var(--space-12);
 
   color: var(--gray-900);
-  font-size: var(--title-md);
+  font-size: 30px;
   font-weight: 600;
 }
 
@@ -74,25 +74,42 @@
   text-align: center;
 }
 
+.form {
+  width: 100%;
+}
+
 .inputWrapper {
   max-width: 100%;
+  margin-bottom: var(--space-20);
 
   input {
     height: 44px;
   }
 }
 
-.actions {
-  display: flex;
-  justify-content: flex-end;
+.button {
+  justify-content: center;
+  width: 100%;
 }
 
 .link {
   display: inline-block;
-  margin-bottom: var(--space-24);
 
-  color: var(--primary-600);
+  color: var(--primary-700);
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
+}
+
+.actions {
+  margin-bottom: var(--space-20);
+}
+
+.signup {
+  color: var(--gray-500);
+  font-size: var(--text-sm);
+
+  .link {
+    margin-left: 2px;
+  }
 }

@@ -25,7 +25,7 @@ export const ProfileMenu = ({ className, user }: ProfileMenuProps) => {
   const handleSignOut = () => {
     localStorage.removeItem('token');
 
-    void navigate('/auth');
+    void navigate('/login');
   };
 
   React.useEffect(() => {

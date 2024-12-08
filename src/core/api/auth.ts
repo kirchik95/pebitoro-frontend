@@ -13,7 +13,7 @@ export const auth = {
     password: string;
     firstName: string;
     lastName: string;
-    middleName: string;
+    middleName?: string;
   }) => {
     const response = await axios.post<AuthResponse>('/auth/register', data);
 

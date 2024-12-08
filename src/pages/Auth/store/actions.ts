@@ -2,6 +2,28 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { api } from '@core/api';
 
+export const signUp = createAsyncThunk(
+  'auth/signUp',
+  async (
+    data: {
+      email: string;
+      password: string;
+      firstName: string;
+      lastName: string;
+    },
+    thunkApi,
+  ) => {
+    try {
+      const response = await api.auth.register(data);
+
+      return { user: response.user, token: response.token };
+    } catch (error) {
+      console.error(error);
+      return thunkApi.rejectWithValue(error);
+    }
+  },
+);
+
 export const signIn = createAsyncThunk(
   'auth/signIn',
   async (data: { email: string; password: string }, thunkApi) => {

@@ -3,14 +3,30 @@ import { createBrowserRouter } from 'react-router';
 
 import App from '@core/App';
 
+import { Signup } from '@pages/Auth/screens/Signup';
+
 import { ProtectedRoutes } from './ProtectedRoutes';
+import { PublicRoutes } from './PublicRoutes';
 
 const Auth = React.lazy(() => import('@pages/Auth'));
 const Home = React.lazy(() => import('@pages/Home'));
 const Tasks = React.lazy(() => import('@pages/Tasks'));
+const Settings = React.lazy(() => import('@pages/Settings'));
 
 export const router = createBrowserRouter([
-  { path: '/auth', element: React.createElement(Auth) },
+  {
+    element: React.createElement(PublicRoutes),
+    children: [
+      {
+        path: '/login',
+        element: React.createElement(Auth),
+      },
+      {
+        path: '/signup',
+        element: React.createElement(Signup),
+      },
+    ],
+  },
   {
     path: '/',
     element: React.createElement(App),
@@ -22,6 +38,10 @@ export const router = createBrowserRouter([
           {
             path: '/tasks/*',
             element: React.createElement(Tasks),
+          },
+          {
+            path: '/settings/*',
+            element: React.createElement(Settings),
           },
         ],
       },
