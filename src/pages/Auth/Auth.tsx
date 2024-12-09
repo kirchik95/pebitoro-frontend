@@ -44,42 +44,54 @@ export const Auth = ({ className }: AuthProps) => {
 
   return (
     <div className={cn(s.root, className)}>
-      <Container>
-        <div className={s.wrapper}>
-          <Logo />
-          <Title className={s.title}>Log in to your account</Title>
-          <Text className={s.info}>Welcome back! Please enter your details.</Text>
-
-          <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-            <Input
-              className={s.inputWrapper}
-              label="Email"
-              placeholder="Enter your email"
-              {...register('email', { required: true })}
-            />
-            <Input
-              className={s.inputWrapper}
-              label="Password"
-              type="password"
-              placeholder="Enter your password"
-              {...register('password', { required: true })}
-            />
-
-            <div className={s.actions}>
-              <Button className={s.button} type="submit">
-                Sign in
-              </Button>
-            </div>
-          </form>
-
-          <div className={s.signup}>
-            <span>{"Don't have an account?"}</span>
-            <NavLink className={s.link} to="/signup">
-              Sign up
-            </NavLink>
+      <div className={s.layout}>
+        <main className={s.main}>
+          <div className={s.header}>
+            <Logo />
           </div>
-        </div>
-      </Container>
+          <Container>
+            <div className={s.wrapper}>
+              <div className={s.header}>
+                <Title className={s.title} size="md">
+                  Welcome back
+                </Title>
+                <Text className={s.subtitle} size="md">
+                  Please enter your details
+                </Text>
+              </div>
+
+              <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+                <Input
+                  className={s.inputWrapper}
+                  label="Email"
+                  placeholder="Enter your email"
+                  {...register('email', { required: true })}
+                />
+                <Input
+                  className={s.inputWrapper}
+                  label="Password"
+                  type="password"
+                  placeholder="Enter your password"
+                  {...register('password', { required: true })}
+                />
+
+                <div className={s.actions}>
+                  <Button className={s.button} size="lg" type="submit">
+                    Sign in
+                  </Button>
+                </div>
+              </form>
+
+              <div className={s.signup}>
+                <span>{"Don't have an account?"}</span>
+                <NavLink className={s.link} to="/signup">
+                  Sign up
+                </NavLink>
+              </div>
+            </div>
+          </Container>
+        </main>
+      </div>
     </div>
   );
 };

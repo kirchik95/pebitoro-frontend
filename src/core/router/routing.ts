@@ -15,24 +15,10 @@ const Settings = React.lazy(() => import('@pages/Settings'));
 
 export const router = createBrowserRouter([
   {
-    element: React.createElement(PublicRoutes),
+    element: React.createElement(ProtectedRoutes),
     children: [
       {
-        path: '/login',
-        element: React.createElement(Auth),
-      },
-      {
-        path: '/signup',
-        element: React.createElement(Signup),
-      },
-    ],
-  },
-  {
-    path: '/',
-    element: React.createElement(App),
-    children: [
-      {
-        element: React.createElement(ProtectedRoutes),
+        element: React.createElement(App),
         children: [
           { path: '/', index: true, element: React.createElement(Home) },
           {
@@ -44,6 +30,19 @@ export const router = createBrowserRouter([
             element: React.createElement(Settings),
           },
         ],
+      },
+    ],
+  },
+  {
+    element: React.createElement(PublicRoutes),
+    children: [
+      {
+        path: '/login',
+        element: React.createElement(Auth),
+      },
+      {
+        path: '/signup',
+        element: React.createElement(Signup),
       },
     ],
   },
