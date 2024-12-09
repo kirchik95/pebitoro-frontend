@@ -11,6 +11,7 @@ import { Checkbox } from '@components/ui/Checkbox';
 import { Icon } from '@components/ui/Icon';
 
 import { TaskActions } from './components/TaskActions';
+import { TaskCategories } from './components/TaskCategories';
 
 import s from './Task.module.css';
 
@@ -58,6 +59,7 @@ export const Task = ({ className, item, onChange, onEdit, onDelete }: TaskProps)
         <TaskActions onEdit={handleEdit} onDelete={handleDelete} />
       </div>
       <div className={s.content}>
+        {Boolean(item.categories.length) && <TaskCategories items={item.categories} />}
         <Text className={s.description}>{item.description}</Text>
       </div>
 
