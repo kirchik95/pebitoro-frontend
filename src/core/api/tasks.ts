@@ -15,6 +15,18 @@ export const tasks = {
 
     return response.data;
   },
+  getTask: async (id: number) => {
+    const response = await axios.get<TaskEntity[]>(`/tasks/${id}`);
+
+    return response.data;
+  },
+  getTasksCount: async (countBy: 'status' | 'priority' | 'category') => {
+    const response = await axios.get<Record<string, number>>('/tasks/count', {
+      params: { countBy },
+    });
+
+    return response.data;
+  },
   createTask: async (data: { title: string; description?: string }) => {
     const response = await axios.post<TaskEntity>('/tasks', data);
 

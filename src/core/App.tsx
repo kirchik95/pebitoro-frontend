@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Outlet } from 'react-router';
 import { getCategories } from 'src/shared/store/categories/actions';
 
-import { Container } from '@components/layout/Container';
 import { Header } from '@components/layout/Header';
 import { Navbar } from '@components/navigation/Navbar';
 
@@ -25,14 +24,12 @@ function App() {
       <Navbar className={s.navigation} />
       <div className={s.layout}>
         <main className={s.main}>
-          <Container>
-            <Header className={s.header} />
-            <div className={s.content}>
-              <React.Suspense fallback="Loading...">
-                <Outlet />
-              </React.Suspense>
-            </div>
-          </Container>
+          <Header className={s.header} />
+          <div className={s.content}>
+            <React.Suspense fallback="Loading...">
+              <Outlet />
+            </React.Suspense>
+          </div>
         </main>
       </div>
     </div>

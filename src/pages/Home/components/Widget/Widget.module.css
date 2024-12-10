@@ -1,0 +1,29 @@
+.root {
+  padding: var(--space-16);
+
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.subtitle {
+  margin-bottom: var(--space-16);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  width: fit-content;
+  padding: var(--space-8) var(--space-12);
+
+  color: var(--gray-600);
+  font-size: var(--text-sm);
+  text-decoration: none;
+
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--shadow-xs);
+}
