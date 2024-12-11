@@ -68,10 +68,6 @@
     "vite-plugin-checker": "^0.8.0",
     "vite-tsconfig-paths": "^5.1.2"
   },
-  "overrides": {
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.1"
-  },
   "lint-staged": {
     "src/**/*.{ts,tsx,json,css,scss,md}": [
       "prettier --write"
